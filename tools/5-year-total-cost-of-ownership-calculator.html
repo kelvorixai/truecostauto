@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6051499531677717" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5-Year Total Cost of Ownership Calculator | TrueCostAuto</title>
+<meta name="description" content="Free car total cost of ownership calculator. Enter your own depreciation, financing, insurance, maintenance, fuel, and mileage numbers for an instant TCO and cost-per-mile figure.">
+<link rel="canonical" href="https://kelvorixai.github.io/truecostauto/tools/5-year-total-cost-of-ownership-calculator.html">
+<meta property="og:title" content="5-Year Total Cost of Ownership Calculator">
+<meta property="og:description" content="Enter your own numbers for depreciation, financing, insurance, maintenance, and fuel to see your car's real total cost of ownership.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .calc{ border:1px solid var(--line); padding:28px 26px; margin-top:28px; background:var(--paper-raised); }
+  .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:20px; }
+  .field label{ font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); font-weight:500; }
+  .field input{
+    font: inherit; font-size:16px; padding:11px 12px; border:1px solid var(--line);
+    background:var(--paper); color:var(--ink); border-radius:2px; width:100%;
+  }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:480px){ .field-row{ grid-template-columns:1fr; } }
+  button.calc-btn{
+    font: inherit; font-size:15px; font-weight:600; background:var(--slate); color:var(--paper);
+    border:none; padding:13px 22px; border-radius:2px; cursor:pointer; width:100%;
+  }
+  button.calc-btn:hover{ background:var(--slate-soft); }
+  .result{ margin-top:26px; padding:22px 24px; border:1px solid var(--rust); border-left:4px solid var(--rust); background:var(--paper); display:none; }
+  .result.show{ display:block; }
+  .result .amount{ font-family:"Fraunces", serif; font-size:2.4rem; font-weight:700; color:var(--rust-strong); font-variant-numeric:tabular-nums; }
+  .result .amount span{ font-size:1.1rem; font-family:"IBM Plex Sans", sans-serif; font-weight:500; color:var(--ink-soft); }
+  .result .breakdown{ margin-top:14px; font-size:13.5px; color:var(--ink-soft); font-family:"IBM Plex Mono", monospace; line-height:1.8; }
+  .share-btn{
+    margin-top:16px; font: inherit; font-size:13px; background:none; color:var(--slate-soft);
+    border:1px solid var(--slate-soft); padding:8px 14px; border-radius:2px; cursor:pointer;
+  }
+  .share-btn:hover{ background:var(--slate-soft); color:var(--paper); }
+  .formula-note{ font-size:13px; color:var(--ink-soft); margin-top:10px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">TrueCostAuto</a>
+    <nav class="site">
+      <a href="../index.html">Guides</a>
+      <a href="index.html">Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="post">
+    <header class="meta">
+      <span class="tag">Tool</span>
+      <h1>Total cost of ownership calculator</h1>
+      <p class="dek">Enter your own numbers for depreciation, financing, insurance, maintenance, fuel, and mileage to get your car's real total cost of ownership — plus a cost-per-mile figure you can compare across vehicles.</p>
+    </header>
+
+    <div class="calc">
+      <div class="field-row">
+        <div class="field">
+          <label for="price">Purchase price</label>
+          <input type="number" id="price" inputmode="decimal" placeholder="e.g. 30000" min="0" step="any">
+        </div>
+        <div class="field">
+          <label for="resale">Expected resale value at end of period</label>
+          <input type="number" id="resale" inputmode="decimal" placeholder="e.g. 15000" min="0" step="any">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="years">Ownership period (years)</label>
+          <input type="number" id="years" inputmode="numeric" placeholder="e.g. 5" min="0" step="1">
+        </div>
+        <div class="field">
+          <label for="financing">Total financing interest over the period</label>
+          <input type="number" id="financing" inputmode="decimal" placeholder="e.g. 2000 (0 if none)" min="0" step="any">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="insurance">Annual insurance premium</label>
+          <input type="number" id="insurance" inputmode="decimal" placeholder="e.g. 1200" min="0" step="any">
+        </div>
+        <div class="field">
+          <label for="maintenance">Annual maintenance & repairs</label>
+          <input type="number" id="maintenance" inputmode="decimal" placeholder="e.g. 800" min="0" step="any">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="fuel">Annual fuel or energy cost</label>
+          <input type="number" id="fuel" inputmode="decimal" placeholder="e.g. 1500" min="0" step="any">
+        </div>
+        <div class="field">
+          <label for="mileage">Expected annual mileage</label>
+          <input type="number" id="mileage" inputmode="decimal" placeholder="e.g. 12000" min="0" step="any">
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calcBtn" type="button">Calculate my total cost of ownership</button>
+
+      <div class="result" id="result">
+        <div class="amount"><span>Total cost of ownership: </span><span id="amountValue">0</span></div>
+        <div class="breakdown" id="breakdown"></div>
+        <button class="share-btn" id="shareBtn" type="button">Copy result to share</button>
+      </div>
+    </div>
+
+    <div class="content" style="margin-top:36px;">
+      <h2>How this is calculated</h2>
+      <p>This adds up the five standard inputs behind any total cost of ownership figure, over your chosen ownership period:</p>
+      <ul>
+        <li><strong>Depreciation:</strong> purchase price minus expected resale value</li>
+        <li><strong>Financing:</strong> total interest paid over the period (enter 0 if paying cash)</li>
+        <li><strong>Insurance:</strong> annual premium × years</li>
+        <li><strong>Maintenance & repairs:</strong> annual estimate × years</li>
+        <li><strong>Fuel or energy:</strong> annual cost × years</li>
+      </ul>
+      <p>The total is then divided by your total expected mileage over the period to get a cost-per-mile figure — the number that makes it possible to compare two different vehicles, or different ownership periods, on equal footing.</p>
+      <p class="formula-note">This is a projection based on the numbers you enter, not a quote — actual costs vary by vehicle, driving habits, and market conditions. It doesn't account for taxes, opportunity cost of cash, or inflation.</p>
+    </div>
+  </article>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>TrueCostAuto</span>
+    <span>Also from Kelvorix AI: <a href="https://kelvorixai.github.io/">see all our sites</a></span>
+    <span>Educational content only — not financial or purchasing advice.</span>
+    <span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var calcBtn = document.getElementById('calcBtn');
+  var shareBtn = document.getElementById('shareBtn');
+  var resultEl = document.getElementById('result');
+  var amountEl = document.getElementById('amountValue');
+  var breakdownEl = document.getElementById('breakdown');
+  var lastSummary = '';
+
+  function fmt(n){
+    return n.toLocaleString('en-US', {maximumFractionDigits: 0});
+  }
+
+  calcBtn.addEventListener('click', function(){
+    var price = parseFloat(document.getElementById('price').value) || 0;
+    var resale = parseFloat(document.getElementById('resale').value) || 0;
+    var years = parseFloat(document.getElementById('years').value) || 0;
+    var financing = parseFloat(document.getElementById('financing').value) || 0;
+    var insurance = parseFloat(document.getElementById('insurance').value) || 0;
+    var maintenance = parseFloat(document.getElementById('maintenance').value) || 0;
+    var fuel = parseFloat(document.getElementById('fuel').value) || 0;
+    var mileage = parseFloat(document.getElementById('mileage').value) || 0;
+
+    if (price <= 0 || years <= 0) {
+      breakdownEl.textContent = '';
+      amountEl.textContent = 'Enter your numbers above';
+      resultEl.classList.add('show');
+      shareBtn.style.display = 'none';
+      return;
+    }
+
+    var depreciation = price - resale;
+    var totalInsurance = insurance * years;
+    var totalMaintenance = maintenance * years;
+    var totalFuel = fuel * years;
+    var total = depreciation + financing + totalInsurance + totalMaintenance + totalFuel;
+    var totalMiles = mileage * years;
+    var costPerYear = total / years;
+    var costPerMonth = costPerYear / 12;
+
+    var lines = [];
+    lines.push('Depreciation: ' + fmt(depreciation));
+    lines.push('Financing: ' + fmt(financing));
+    lines.push('Insurance (' + years + ' yrs): ' + fmt(totalInsurance));
+    lines.push('Maintenance (' + years + ' yrs): ' + fmt(totalMaintenance));
+    lines.push('Fuel/energy (' + years + ' yrs): ' + fmt(totalFuel));
+    lines.push('Cost per year: ' + fmt(costPerYear));
+    lines.push('Cost per month: ' + fmt(costPerMonth));
+    if (totalMiles > 0) {
+      var costPerMile = total / totalMiles;
+      lines.push('Cost per mile: ' + costPerMile.toFixed(2));
+    }
+
+    amountEl.textContent = fmt(Math.round(total));
+    breakdownEl.innerHTML = lines.join('<br>');
+    resultEl.classList.add('show');
+    shareBtn.style.display = 'inline-block';
+    lastSummary = 'My ' + years + '-year total cost of ownership came to ' + fmt(Math.round(total)) + ' (' + fmt(costPerYear) + '/year). Try it yourself: https://kelvorixai.github.io/truecostauto/tools/5-year-total-cost-of-ownership-calculator.html';
+  });
+
+  shareBtn.addEventListener('click', function(){
+    if (!lastSummary) return;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(lastSummary).then(function(){
+        shareBtn.textContent = 'Copied!';
+        setTimeout(function(){ shareBtn.textContent = 'Copy result to share'; }, 1800);
+      });
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
+
