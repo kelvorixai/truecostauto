@@ -40,7 +40,70 @@
   }
   .share-btn:hover{ background:var(--slate-soft); color:var(--paper); }
   .formula-note{ font-size:13px; color:var(--ink-soft); margin-top:10px; }
+  .faq{ margin-top:36px; }
+  .faq details{ border:1px solid var(--line); border-radius:2px; padding:14px 16px; margin-bottom:10px; background:var(--paper-raised); }
+  .faq summary{ cursor:pointer; font-weight:600; list-style:none; }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{ content:"+"; float:right; color:var(--ink-soft); }
+  .faq details[open] summary::after{ content:"\2013"; }
+  .faq p{ margin-top:10px; font-size:14.5px; color:var(--ink-soft); }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What counts as depreciation in a car's total cost of ownership?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The purchase price minus the vehicle's expected resale value at the end of your ownership period — usually the single largest cost in total cost of ownership."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does total cost of ownership include fuel and maintenance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — this calculator multiplies your annual insurance, maintenance, and fuel or energy estimates by the number of years you plan to own the vehicle, then adds that to depreciation and financing costs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why divide total cost by mileage instead of just by years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A cost-per-mile figure lets you compare vehicles or ownership scenarios fairly even when annual mileage differs — a car driven 20,000 miles a year and one driven 5,000 miles a year can have very different real costs per mile despite similar annual totals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this calculator account for taxes or inflation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — it's a projection based on the numbers you enter, not a quote. It doesn't adjust for taxes, the opportunity cost of paying cash, or inflation over the ownership period."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "5-Year Total Cost of Ownership Calculator",
+  "url": "https://kelvorixai.github.io/truecostauto/tools/5-year-total-cost-of-ownership-calculator.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "AED"
+  },
+  "description": "Free calculator that estimates a car's total cost of ownership from purchase price, depreciation, financing, insurance, maintenance, and fuel, including a cost-per-mile figure."
+}
+</script>
 </head>
 <body>
 
@@ -126,6 +189,26 @@
       </ul>
       <p>The total is then divided by your total expected mileage over the period to get a cost-per-mile figure — the number that makes it possible to compare two different vehicles, or different ownership periods, on equal footing.</p>
       <p class="formula-note">This is a projection based on the numbers you enter, not a quote — actual costs vary by vehicle, driving habits, and market conditions. It doesn't account for taxes, opportunity cost of cash, or inflation.</p>
+    </div>
+
+    <div class="content faq" style="margin-top:36px;">
+      <h2>Frequently asked questions</h2>
+      <details>
+        <summary>What counts as depreciation in a car's total cost of ownership?</summary>
+        <p>The purchase price minus the vehicle's expected resale value at the end of your ownership period — usually the single largest cost in total cost of ownership.</p>
+      </details>
+      <details>
+        <summary>Does total cost of ownership include fuel and maintenance?</summary>
+        <p>Yes — this calculator multiplies your annual insurance, maintenance, and fuel or energy estimates by the number of years you plan to own the vehicle, then adds that to depreciation and financing costs.</p>
+      </details>
+      <details>
+        <summary>Why divide total cost by mileage instead of just by years?</summary>
+        <p>A cost-per-mile figure lets you compare vehicles or ownership scenarios fairly even when annual mileage differs — a car driven 20,000 miles a year and one driven 5,000 miles a year can have very different real costs per mile despite similar annual totals.</p>
+      </details>
+      <details>
+        <summary>Does this calculator account for taxes or inflation?</summary>
+        <p>No — it's a projection based on the numbers you enter, not a quote. It doesn't adjust for taxes, the opportunity cost of paying cash, or inflation over the ownership period.</p>
+      </details>
     </div>
   </article>
 </main>
@@ -213,4 +296,3 @@
 
 </body>
 </html>
-
